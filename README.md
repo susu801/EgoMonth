@@ -92,12 +92,6 @@ CONFIG = {
 }
 ```
 
-For each dataset name, the script loads:
-
-```text
-/share/hjx/global_json_list/{dataset_name}/QA.json
-```
-
 If your metadata is stored elsewhere, update the `data_path` construction in `run_single_dataset`.
 
 Run:
