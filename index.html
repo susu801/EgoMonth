@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EgoMonth: a month-level egocentric video benchmark for evaluating long-term spatiotemporal memory in multimodal large language models.">
+    <meta property="og:title" content="EgoMonth">
+    <meta property="og:description" content="A Month-Level Egocentric Video Benchmark for Long-Term Spatiotemporal Memory">
+    <meta property="og:image" content="assets/figure-000.png">
+    <title>EgoMonth | Month-Level Egocentric Memory Benchmark</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#">EgoMonth</a>
+        <div class="nav-links">
+          <a href="#benchmark">Benchmark</a>
+          <a href="#tasks">Tasks</a>
+          <a href="#results">Results</a>
+          <a href="#evaluation">Evaluation</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="venue">Project Page</p>
+          <h1>EgoMonth</h1>
+          <p class="subtitle">A Month-Level Egocentric Video Benchmark for Long-Term Spatiotemporal Memory</p>
+          <p class="intro">
+            EgoMonth evaluates whether multimodal large language models can retain, retrieve, and reason over
+            real daily-life experience across days and weeks, instead of treating long videos as isolated clips.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#benchmark">Benchmark</a>
+            <a class="button" href="https://github.com/susu801/EgoMonth">Code</a>
+            <a class="button" href="#evaluation">Run Evaluation</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img src="assets/figure-000.png" alt="Overview of the EgoMonth dataset with month-scale daily first-person recordings and example activities.">
+        </figure>
+      </section>
+
+      <section id="benchmark" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Benchmark</p>
+          <h2>Month-level first-person video understanding</h2>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><strong>301h</strong><span>egocentric video</span></div>
+          <div class="stat"><strong>738</strong><span>video clips</span></div>
+          <div class="stat"><strong>20</strong><span>participants</span></div>
+          <div class="stat"><strong>20-120d</strong><span>recording span</span></div>
+          <div class="stat"><strong>1,443</strong><span>human-crafted QA pairs</span></div>
+          <div class="stat"><strong>14</strong><span>memory and reasoning tasks</span></div>
+        </div>
+        <div class="text-columns">
+          <p>
+            Existing long-video benchmarks mostly use web videos, movies, or isolated sessions. EgoMonth focuses
+            on longitudinal first-person recordings where recurring spaces, habits, sparse events, and cross-day
+            dependencies matter.
+          </p>
+          <p>
+            Each question is a four-choice QA item grounded in real video evidence. Some questions are answered
+            from a single recording, while others require integrating evidence across multiple videos from
+            different days.
+          </p>
+        </div>
+      </section>
+
+      <section class="image-band" aria-label="Representative figures from the EgoMonth paper">
+        <figure>
+          <img src="assets/figure-001.png" alt="Single-video question-answering example from EgoMonth.">
+          <figcaption>Single-video QA probes procedure understanding within one long egocentric recording.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/figure-003.png" alt="Cross-video question-answering example from EgoMonth.">
+          <figcaption>Cross-video QA requires memory integration across multiple days and contexts.</figcaption>
+        </figure>
+      </section>
+
+      <section id="tasks" class="section split">
+        <div>
+          <p class="eyebrow">Task Taxonomy</p>
+          <h2>Three cognitive levels, fourteen task types</h2>
+          <p>
+            EgoMonth organizes evaluation into a hierarchy that increases memory pressure from recurring schema
+            discovery to sparse episode retrieval and multi-evidence reasoning.
+          </p>
+          <div class="level-list">
+            <div>
+              <h3>Level 1: Schema Consolidation</h3>
+              <p>Habit inference and personality inference from repeated behavioral patterns over weeks.</p>
+            </div>
+            <div>
+              <h3>Level 2: Episodic Indexing</h3>
+              <p>Detail retrieval, spatial relation, self-localization, temporal ordering, event time, and object location.</p>
+            </div>
+            <div>
+              <h3>Level 3: Cascading Reasoning</h3>
+              <p>Procedure planning, event counting, object counting, route reasoning, cross-view spatial reasoning, and direction judgement.</p>
+            </div>
+          </div>
+        </div>
+        <figure class="panel-image">
+          <img src="assets/figure-007.png" alt="Distribution of EgoMonth QA pairs across 14 task types and three cognitive levels.">
+        </figure>
+      </section>
+
+      <section id="results" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Main Results</p>
+          <h2>Current MLLMs remain far below human long-term memory</h2>
+        </div>
+        <div class="results-grid">
+          <div class="result-card highlight">
+            <span>Best closed-source model</span>
+            <strong>71.8%</strong>
+            <p>Gemini 2.5 Pro macro-average accuracy</p>
+          </div>
+          <div class="result-card">
+            <span>Best open-source model</span>
+            <strong>58.0%</strong>
+            <p>Qwen2.5-VL-32B macro-average accuracy</p>
+          </div>
+          <div class="result-card">
+            <span>Human baseline</span>
+            <strong>94.2%</strong>
+            <p>Mean macro-average accuracy from three trained annotators</p>
+          </div>
+        </div>
+        <div class="table-wrap" role="region" aria-label="Macro-average and micro accuracy table">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Frames</th>
+                <th>Parameters</th>
+                <th>Avg.</th>
+                <th>Acc.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Chat-UniVi-V1.5</td><td>256</td><td>7B</td><td>39.5</td><td>39.9</td></tr>
+              <tr><td>LLaVA-NeXT-Video</td><td>64</td><td>7B</td><td>40.6</td><td>41.7</td></tr>
+              <tr><td>MiniCPM-V 4.5</td><td>256</td><td>8B</td><td>56.0</td><td>60.6</td></tr>
+              <tr><td>Qwen2-VL</td><td>256</td><td>7B</td><td>54.5</td><td>57.0</td></tr>
+              <tr><td>Qwen2.5-VL</td><td>256</td><td>32B</td><td>58.0</td><td>60.8</td></tr>
+              <tr><td>Qwen3-VL</td><td>256</td><td>8B</td><td>51.4</td><td>53.7</td></tr>
+              <tr><td>Qwen3-VL-30B-A3B</td><td>256</td><td>30B</td><td>53.0</td><td>56.7</td></tr>
+              <tr><td>ShareGPT4Video</td><td>64</td><td>8B</td><td>37.1</td><td>36.9</td></tr>
+              <tr><td>ST-LLM</td><td>256</td><td>-</td><td>38.8</td><td>40.8</td></tr>
+              <tr><td>VideoLLaMA3</td><td>512</td><td>7B</td><td>50.3</td><td>53.1</td></tr>
+              <tr><td>VITA-1.5</td><td>16</td><td>7B</td><td>51.3</td><td>53.6</td></tr>
+              <tr><td>Gemini 2.5 Pro</td><td>1 fps</td><td>-</td><td>71.8</td><td>72.6</td></tr>
+              <tr class="human"><td>Human</td><td>-</td><td>-</td><td>94.2</td><td>95.1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section split">
+        <figure class="panel-image">
+          <img src="assets/figure-008.png" alt="Activity categories and fine-grained activities in EgoMonth.">
+        </figure>
+        <div>
+          <p class="eyebrow">Daily-Life Coverage</p>
+          <h2>Diverse activities in persistent environments</h2>
+          <p>
+            EgoMonth covers study and work, transportation, food and dining, shopping, leisure and entertainment,
+            and household chores. The longitudinal setting makes visually similar scenes recur across days, which
+            stresses temporal indexing and spatial grounding.
+          </p>
+        </div>
+      </section>
+
+      <section id="evaluation" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Evaluation Scripts</p>
+          <h2>Unified multiple-choice protocol</h2>
+        </div>
+        <p class="narrow">
+          The repository includes model-specific evaluation scripts for Qwen2-VL, Qwen2.5-VL, Qwen3-VL,
+          Qwen3-VL-30B-A3B, MiniCPM-V, LLaVA-NeXT-Video, Chat-UniVi, ST-LLM, VideoLLaMA3, VITA-1.5,
+          and Gemini 2.5 Pro. Each script builds a video-grounded prompt and extracts a single answer letter
+          from A, B, C, or D for direct comparison with the ground-truth option.
+        </p>
+        <pre><code># Edit DATA_PATH, CONFIG["model_path"], and CONFIG["video_root"] first.
+python scripts/qwen2vl.py
+
+# Multi-subset Qwen2.5-VL-32B example:
+# edit DATASET_LIST, CONFIG["model_path"], and CONFIG["video_root"].
+python scripts/qwen2.5vl_32b.py</code></pre>
+      </section>
+
+      <section id="citation" class="section citation">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>BibTeX</h2>
+        </div>
+        <pre><code>@misc{egomonth2026,
+  title = {EgoMonth: A Month-Level Egocentric Video Benchmark for Long-Term Spatiotemporal Memory},
+  author = {EgoMonth Team},
+  year = {2026}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>EgoMonth: Month-Level Egocentric Memory</p>
+      <a href="https://github.com/susu801/EgoMonth">github.com/susu801/EgoMonth</a>
+    </footer>
+  </body>
+</html>
