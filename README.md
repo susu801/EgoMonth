@@ -32,6 +32,26 @@ Cross-video QA:
 
 ![EgoMonth activity coverage](assets/figure-008.png)
 
+## Model Evaluation Results
+
+Macro-average accuracy (`Avg.`) is computed across task types. Micro accuracy (`Acc.`) is computed over all QA pairs.
+
+| Model | Frames | Parameters | Avg. | Acc. |
+|---|---:|---:|---:|---:|
+| Chat-UniVi-V1.5 | 256 | 7B | 39.5 | 39.9 |
+| LLaVA-NeXT-Video | 64 | 7B | 40.6 | 41.7 |
+| MiniCPM-V 4.5 | 256 | 8B | 56.0 | 60.6 |
+| Qwen2-VL | 256 | 7B | 54.5 | 57.0 |
+| Qwen2.5-VL | 256 | 32B | 58.0 | 60.8 |
+| Qwen3-VL | 256 | 8B | 51.4 | 53.7 |
+| Qwen3-VL-30B-A3B | 256 | 30B | 53.0 | 56.7 |
+| ShareGPT4Video | 64 | 8B | 37.1 | 36.9 |
+| ST-LLM | 256 | - | 38.8 | 40.8 |
+| VideoLLaMA3 | 512 | 7B | 50.3 | 53.1 |
+| VITA-1.5 | 16 | 7B | 51.3 | 53.6 |
+| Gemini 2.5 Pro | 1 fps | - | 71.8 | 72.6 |
+| Human | - | - | 94.2 | 95.1 |
+
 ## Repository Layout
 
 ```text
