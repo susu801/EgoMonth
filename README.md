@@ -8,6 +8,30 @@ EgoMonth contains 301 hours of first-person daily-life video, 738 clips, 20 part
 
 Open `index.html` directly or enable GitHub Pages from the `main` branch root. The page includes representative figures from the paper, including the dataset overview, single-video QA, cross-video QA, task taxonomy, and daily-life activity coverage.
 
+## Representative Figures
+
+### Dataset Overview
+
+![EgoMonth dataset overview](assets/figure-000.png)
+
+### QA Examples
+
+Single-video QA:
+
+![Single-video QA example](assets/figure-001.png)
+
+Cross-video QA:
+
+![Cross-video QA example](assets/figure-003.png)
+
+### Task Taxonomy
+
+![EgoMonth task taxonomy and QA distribution](assets/figure-007.png)
+
+### Daily-Life Activity Coverage
+
+![EgoMonth activity coverage](assets/figure-008.png)
+
 ## Repository Layout
 
 ```text
