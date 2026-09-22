@@ -88,62 +88,6 @@ The Qwen scripts expect a JSON file containing a list of samples. Each sample sh
 
 `video_path` can contain one video or multiple videos. The script joins each relative path with `CONFIG["video_root"]`.
 
-## Running The Qwen2-VL Example
-
-Install the main dependencies in an environment with CUDA:
-
-```bash
-pip install torch transformers qwen-vl-utils decord pillow numpy tqdm
-```
-
-Edit `scripts/qwen2vl.py` before running:
-
-```python
-DATA_PATH = "/path/to/EgoMonth/QA.json"
-
-CONFIG = {
-    "model_path": "/path/to/qwen2VL",
-    "data_path": DATA_PATH,
-    "video_root": "/path/to/video/root",
-    "output_path": "qwen2vl_results.csv",
-    "log_path": "qwen2vl_eval.log",
-    "num_frames": 256,
-    "max_new_tokens": 10,
-    "device": "cuda:0"
-}
-```
-
-Run evaluation:
-
-```bash
-python scripts/qwen2vl.py
-```
-
-The script writes a CSV file with `question`, `pred`, `gt`, `correct`, and `raw`, and a log file containing per-sample predictions and final accuracy.
-
-## Running The Qwen2.5-VL-32B Multi-Subset Example
-
-Edit `scripts/qwen2.5vl_32b.py`:
-
-```python
-DATASET_LIST = ["013", "023"]
-
-CONFIG = {
-    "model_path": "/path/to/qwen2.5VL_32B",
-    "video_root": "/path/to/video/root",
-    "num_frames": 256,
-    "max_new_tokens": 10
-}
-```
-
-If your metadata is stored elsewhere, update the `data_path` construction in `run_single_dataset`.
-
-Run:
-
-```bash
-python scripts/qwen2.5vl_32b.py
-```
-
 ## Citation
 
 ```bibtex
